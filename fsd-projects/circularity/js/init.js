@@ -1,3 +1,5 @@
+
+
 var init = function (window) {
     'use strict';
     var 
@@ -20,19 +22,27 @@ var init = function (window) {
         ///////////////////
         
         // TODO 1 : Declare and initialize our variables
-
+var circle;
+var circles = []
 
 
         // TODO 2 : Create a function that draws a circle 
-        
+        function drawCircle(){
+            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+            physikz.addRandomVelocity(circle, canvas, 5, 5);
+            view.addChild(circle);
+            circles.push(circle);
+        }
 
 
         // TODO 3 : Call the drawCircle() function
-
-
+        
+        
 
         // TODO 7 : Use a loop to create multiple circles
-
+        for (var i = 0; i < 100; i++){
+         drawCircle();
+        }
 
 
 
@@ -47,13 +57,17 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the position of each circle using physikz.updatePosition()
-
+        
             
             // TODO 5 : Call game.checkCirclePosition() on your circles
-           
+          
 
             // TODO 8 / TODO 9 : Iterate over the array
-           
+           for(var it = 0; it < circles.length; it++){
+            physikz.updatePosition(circles[it])
+             game.checkCirclePosition(circles[it]) 
+
+           }
             
         }
     
@@ -70,7 +84,9 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
+            if(circle.y < 0){
+                circle.y = canvas.height
+            }
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
