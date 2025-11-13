@@ -40,7 +40,7 @@ var circles = []
         
 
         // TODO 7 : Use a loop to create multiple circles
-        for (var i = 0; i < 15000; i++){
+        for (var i = 0; i < 5000; i++){
          drawCircle();
         }
 
